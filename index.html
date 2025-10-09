@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Профессиональный видеопродакшн — VProd Studio: создание рекламных роликов, клипов и свадебных видео.">
+  <title>VProd Studio — Видеопродакшн</title>
+
+  <!-- Шрифт Google (подключение нужно, иначе на GitHub Pages не загрузится локально) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-bg: #0e0e0e;
+      --secondary-bg: #1b1b1b;
+      --card-bg: #1f1f1f;
+      --primary-text: #ffffff;
+      --accent-gold: #f2c94c;
+      --accent-orange: #ff7b00;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: var(--secondary-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--primary-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* ===== DROPDOWN ===== */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background: var(--card-bg);
+      top: 100%;
+      left: 0;
+      min-width: 160px;
+      border-radius: 0.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--primary-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--accent-orange);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero__title {
+      font-size: 3rem;
+      color: var(--accent-gold);
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .hero__subtitle {
+      font-size: 1.2rem;
+      margin: 1rem 0 2rem;
+      color: #ddd;
+      animation: fadeInUp 1.8s ease forwards;
+    }
+
+    .hero__btn {
+      padding: 0.8rem 1.5rem;
+      background: var(--accent-orange);
+      border: none;
+      color: var(--primary-text);
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .hero__btn:hover {
+      background: var(--accent-gold);
+      transform: scale(1.05);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--primary-bg);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .section__title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent-gold);
+    }
+
+    .services__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .service {
+      background: var(--card-bg);
+      border-radius: 0.75rem;
+      width: 300px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .service:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(255,123,0,0.3);
+    }
+
+    .service img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .service__content {
+      padding: 1.5rem;
+    }
+
+    .service__title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--accent-orange);
+    }
+
+    .service__text {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews {
+      background: var(--secondary-bg);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .reviews__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .review {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      max-width: 350px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: var(--transition);
+    }
+
+    .review:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,194,255,0.3);
+    }
+
+    .review__text {
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .review__author {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--secondary-bg);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .footer__socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer__social-link svg {
+      fill: var(--accent-gold);
+      width: 28px;
+      height: 28px;
+      transition: var(--transition);
+    }
+
+    .footer__social-link:hover svg {
+      fill: var(--accent-orange);
+      transform: scale(1.2);
+    }
+
+    .footer__text {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SVG СПРАЙТ -->
+  <svg style="display:none;">
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.8-2.7a1 1 0 100 2 1 1 0 000-2z"/>
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24">
+      <path d="M10 15l5.19-3L10 9v6zm12-3c0-1.7-.1-3.4-.3-5-.2-1.5-1.3-2.6-2.8-2.8C16.3 4.9 12 4.9 12 4.9s-4.3 0-6.9.3C3.6 5.6 2.5 6.7 2.3 8.2 2.1 9.8 2 11.5 2 13.2c0 1.7.1 3.4.3 5 .2 1.5 1.3 2.6 2.8 2.8 2.6.3 6.9.3 6.9.3s4.3 0 6.9-.3c1.5-.2 2.6-1.3 2.8-2.8.2-1.6.3-3.3.3-5z"/>
+    </symbol>
+    <symbol id="icon-telegram" viewBox="0 0 24 24">
+      <path d="M9.8 14.5l-.4 3.9c.6 0 .8-.3 1.1-.6l2.5-2.4 5.1 3.7c.9.5 1.5.2 1.7-.9l3.1-14.5c.3-1.2-.4-1.7-1.2-1.4L1.4 9.2C.2 9.6.2 10.3 1.1 10.6l5.1 1.6 11.8-7.4L9.8 14.5z"/>
+    </symbol>
+  </svg>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">VProd Studio</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Главная</a></li>
+        <li class="dropdown">
+          <a href="#services">Услуги ▼</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Рекламные видео</a></li>
+            <li><a href="#">Свадебные съёмки</a></li>
+            <li><a href="#">Музыкальные клипы</a></li>
+          </ul>
+        </li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">Создаём видео, которое вдохновляет</h1>
+      <p class="hero__subtitle">От идеи до готового ролика — с любовью и профессионализмом</p>
+      <button class="hero__btn">Связаться с нами</button>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2 class="section__title">Наши услуги</h2>
+    <div class="services__list">
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80" alt="Рекламные ролики" />
+        <div class="service__content">
+          <h3 class="service__title">Рекламные ролики</h3>
+          <p class="service__text">Создаём мощные видео для бизнеса, которые повышают продажи.</p>
+        </div>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=800&q=80" alt="Свадебные клипы" />
+        <div class="service__content">
+          <h3 class="service__title">Свадебные клипы</h3>
+          <p class="service__text">Сохраняем ваши эмоции в стильном и душевном видео.</p>
+        </div>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Музыкальные клипы" />
+        <div class="service__content">
+          <h3 class="service__title">Клипы для артистов</h3>
+          <p class="service__text">От сценария до монтажа — делаем визуал, который запомнят.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <h2 class="section__title">Отзывы клиентов</h2>
+    <div class="reviews__list">
+      <article class="review">
+        <p class="review__text">“Команда VProd — настоящие профессионалы! Сняли промо-видео быстро и качественно.”</p>
+        <span class="review__author">— Анна Петрова</span>
+      </article>
+      <article class="review">
+        <p class="review__text">“Клип получился просто огонь 🔥 Спасибо за творчество и подход!”</p>
+        <span class="review__author">— DJ Alex</span>
+      </article>
+      <article class="review">
+        <p class="review__text">“Работа с VProd — одно удовольствие! Отличное качество и стиль.”</p>
+        <span class="review__author">— Илья Марков</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer__socials">
+      <a href="#" class="footer__social-link"><svg><use xlink:href="#icon-instagram"></use></svg></a>
+      <a href="#" class="footer__social-link"><svg><use xlink:href="#icon-youtube"></use></svg></a>
+      <a href="#" class="footer__social-link"><svg><use xlink:href="#icon-telegram"></use></svg></a>
+    </div>
+    <p class="footer__text">© 2025 VProd Studio. Все права защищены.</p>
+  </footer>
+</body>
+</html>
